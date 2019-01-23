@@ -4,7 +4,7 @@ describe 'customer request' do
   it 'shows a list of all customers' do
     create_list(:customer, 3)
 
-    get '/api/v1/customers'
+    get '/api/v1/customers.json'
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

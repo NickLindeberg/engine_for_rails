@@ -23,7 +23,7 @@ describe 'merchant request' do
     merc_1 = Merchant.first
     merc_2 = Merchant.last
 
-    get "/api/v1/merchants/#{merc_1.id}"
+    get "/api/v1/merchants/#{merc_1.id}.json"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

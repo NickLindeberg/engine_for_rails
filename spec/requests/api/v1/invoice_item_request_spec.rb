@@ -32,7 +32,7 @@ describe 'invoice_item request' do
     ii_1 = InvoiceItem.first
     ii_2 = InvoiceItem.last
 
-    get "/api/v1/invoice_items/#{ii_1.id}"
+    get "/api/v1/invoice_items/#{ii_1.id}.json"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

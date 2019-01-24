@@ -34,5 +34,7 @@ describe 'item request' do
     expect(parsed).to have_key(:data)
 
     data = parsed[:data]
+    expect(data[:id]).to eq(item_1.id.to_s)
+    expect(data[:id]).to_not eq(item_2.id.to_s)
   end
 end

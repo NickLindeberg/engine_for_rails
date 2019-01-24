@@ -27,7 +27,7 @@ describe 'item request' do
     item_1 = Item.first
     item_2 = Item.last
 
-    get "/api/v1/items/#{item_1.id}"
+    get "/api/v1/items/#{item_1.id}.json"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

@@ -28,7 +28,7 @@ describe 'invoice request' do
     inv_1 = Invoice.first
     inv_2 = Invoice.last
 
-    get "/api/v1/invoices/#{inv_1.id}"
+    get "/api/v1/invoices/#{inv_1.id}.json"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

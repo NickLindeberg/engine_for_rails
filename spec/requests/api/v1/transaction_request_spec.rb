@@ -30,7 +30,7 @@ describe 'transaction request' do
     tran_1 = Transaction.first
     tran_2 = Transaction.last
 
-    get "/api/v1/transactions/#{tran_1.id}"
+    get "/api/v1/transactions/#{tran_1.id}.json"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

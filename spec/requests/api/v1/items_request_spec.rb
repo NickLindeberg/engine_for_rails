@@ -19,6 +19,20 @@ describe 'item request' do
     expect(data.first[:attributes]).to have_key(:name)
     expect(data.first[:attributes]).to have_key(:description)
     expect(data.first[:attributes]).to have_key(:unit_price)
-    expect(data.first[:attributes]).to have_key(:merchant_id)  
+    expect(data.first[:attributes]).to have_key(:merchant_id)
+  end
+  it 'shows a single item' do
+    merchant = create(:merchant)
+    create_list(:item, 2, merchant_id: merchant.id)
+    item_1 = Item.first
+    item_2 = Item.last
+
+    get "/api/v1/items/#{item_1.id}"
+
+    expect(response).to be_successful
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed).to have_key(:data)
+
+    data = parsed[:data]
   end
 end

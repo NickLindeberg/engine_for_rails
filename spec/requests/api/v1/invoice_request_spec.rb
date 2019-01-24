@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'invoice request' do
-  it 'shows a list of all invoice_items' do
+  it 'shows a list of all invoices' do
     customer = create(:customer)
     merchant = create(:merchant)
     create_list(:invoice, 3, customer_id: customer.id, merchant_id: merchant.id)
@@ -21,7 +21,7 @@ describe 'invoice request' do
     expect(data.first[:attributes]).to have_key(:merchant_id)
   end
 
-  it 'shows a list of all invoice_items' do
+  it 'shows a list of an invoice' do
     customer = create(:customer)
     merchant = create(:merchant)
     create_list(:invoice, 2, customer_id: customer.id, merchant_id: merchant.id)

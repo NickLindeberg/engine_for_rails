@@ -23,7 +23,7 @@ describe 'invoice_item request' do
     expect(data.first[:attributes]).to have_key(:quantity)
   end
 
-  it 'shows a list of all invoice_items' do
+  it 'shows a list of an invoice_item' do
     customer = create(:customer)
     merchant = create(:merchant)
     invoice = create(:invoice, merchant_id: merchant.id, customer_id: customer.id)

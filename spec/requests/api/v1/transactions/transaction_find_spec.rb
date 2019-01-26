@@ -8,7 +8,7 @@ describe 'transaction find' do
     tran_1 = create(:transaction, invoice_id: invoice.id)
     tran_2 = create(:transaction, invoice_id: invoice.id)
 
-    get "/api/v1/transactions/find?#{tran_1.id}"
+    get "/api/v1/transactions/find?id=#{tran_1.id}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -33,7 +33,7 @@ describe 'transaction find' do
     tran_1 = create(:transaction, credit_card_number: "4654405418249632", invoice_id: invoice.id)
     tran_2 = create(:transaction, invoice_id: invoice.id)
 
-    get "/api/v1/transactions/find?#{tran_1.credit_card_number}"
+    get "/api/v1/transactions/find?credit_card_number=#{tran_1.credit_card_number}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -58,7 +58,7 @@ describe 'transaction find' do
     tran_1 = create(:transaction, result: "success", invoice_id: invoice.id)
     tran_2 = create(:transaction, invoice_id: invoice.id)
 
-    get "/api/v1/transactions/find?#{tran_1.result}"
+    get "/api/v1/transactions/find?result=#{tran_1.result}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -83,7 +83,7 @@ describe 'transaction find' do
     tran_1 = create(:transaction, created_at: "2012-03-27 14:54:09 UTC", invoice_id: invoice.id)
     tran_2 = create(:transaction, invoice_id: invoice.id)
 
-    get "/api/v1/transactions/find?#{tran_1.created_at}"
+    get "/api/v1/transactions/find?created_at=#{tran_1.created_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -108,7 +108,7 @@ describe 'transaction find' do
     tran_1 = create(:transaction, updated_at: "2012-03-27 14:54:09 UTC", invoice_id: invoice.id)
     tran_2 = create(:transaction, invoice_id: invoice.id)
 
-    get "/api/v1/transactions/find?#{tran_1.updated_at}"
+    get "/api/v1/transactions/find?updated_at=#{tran_1.updated_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

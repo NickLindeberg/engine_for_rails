@@ -7,6 +7,6 @@ class Api::V1::Invoices::FindController < ApplicationController
   private
 
   def inv_params
-    params.permit("status")
+    params.permit("status", "created_at", "updated_at")
   end
 end

@@ -53,12 +53,12 @@ describe 'item request' do
   end
   it 'can find an item by description' do
     merchant = create(:merchant)
-    item_1 = create(:item, name: "Slanket", merchant_id: merchant.id)
+    item_1 = create(:item, description: "will get you all the stuff", merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
     item_1 = Item.first
     item_2 = Item.last
 
-    get "/api/v1/items/find?#{item_1.name}"
+    get "/api/v1/items/find?#{item_1.description}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

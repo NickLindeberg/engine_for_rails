@@ -7,7 +7,7 @@ describe 'invoice_item find request' do
     inv_1 = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
     inv_2 = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
 
-    get "/api/v1/invoices/find?#{inv_1.id}"
+    get "/api/v1/invoices/find?id=#{inv_1.id}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -30,7 +30,7 @@ describe 'invoice_item find request' do
     inv_1 = create(:invoice, status: "pending", customer_id: customer.id, merchant_id: merchant.id)
     inv_2 = create(:invoice, status: "on fire", customer_id: customer.id, merchant_id: merchant.id)
 
-    get "/api/v1/invoices/find?#{inv_1.status}"
+    get "/api/v1/invoices/find?statu=#{inv_1.status}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -53,7 +53,7 @@ describe 'invoice_item find request' do
     inv_1 = create(:invoice, created_at: "2012-03-27 14:54:09 UTC", customer_id: customer.id, merchant_id: merchant.id)
     inv_2 = create(:invoice, status: "on fire", customer_id: customer.id, merchant_id: merchant.id)
 
-    get "/api/v1/invoices/find?#{inv_1.created_at}"
+    get "/api/v1/invoices/find?created_at=#{inv_1.created_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -76,7 +76,7 @@ describe 'invoice_item find request' do
     inv_1 = create(:invoice, updated_at: "2012-03-27 14:54:09 UTC", customer_id: customer.id, merchant_id: merchant.id)
     inv_2 = create(:invoice, status: "on fire", customer_id: customer.id, merchant_id: merchant.id)
 
-    get "/api/v1/invoices/find?#{inv_1.updated_at}"
+    get "/api/v1/invoices/find?updated_at=#{inv_1.updated_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

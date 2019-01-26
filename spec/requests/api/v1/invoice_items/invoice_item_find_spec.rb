@@ -9,7 +9,7 @@ describe 'invoice_item find request' do
     ii_1 = create(:invoice_item, quantity: 4, invoice_id: invoice.id, item_id: item.id)
     ii_2 = create(:invoice_item, invoice_id: invoice.id, item_id: item.id)
 
-    get "/api/v1/invoice_items/find?#{ii_1.id}"
+    get "/api/v1/invoice_items/find?id=#{ii_1.id}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -31,7 +31,7 @@ describe 'invoice_item find request' do
     ii_1 = create(:invoice_item, quantity: 4, invoice_id: invoice.id, item_id: item.id)
     ii_2 = create(:invoice_item, invoice_id: invoice.id, item_id: item.id)
 
-    get "/api/v1/invoice_items/find?#{ii_1.quantity}"
+    get "/api/v1/invoice_items/find?quantity=#{ii_1.quantity}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -53,7 +53,7 @@ describe 'invoice_item find request' do
     ii_1 = create(:invoice_item, unit_price: 15, invoice_id: invoice.id, item_id: item.id)
     ii_2 = create(:invoice_item, invoice_id: invoice.id, item_id: item.id)
 
-    get "/api/v1/invoice_items/find?#{ii_1.unit_price}"
+    get "/api/v1/invoice_items/find?unit_price=#{ii_1.unit_price}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -75,7 +75,7 @@ describe 'invoice_item find request' do
     ii_1 = create(:invoice_item, created_at: "2012-03-27 14:54:09 UTC", invoice_id: invoice.id, item_id: item.id)
     ii_2 = create(:invoice_item, invoice_id: invoice.id, item_id: item.id)
 
-    get "/api/v1/invoice_items/find?#{ii_1.created_at}"
+    get "/api/v1/invoice_items/find?created_at=#{ii_1.created_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -97,7 +97,7 @@ describe 'invoice_item find request' do
     ii_1 = create(:invoice_item, updated_at: "2012-03-27 14:54:09 UTC", invoice_id: invoice.id, item_id: item.id)
     ii_2 = create(:invoice_item, invoice_id: invoice.id, item_id: item.id)
 
-    get "/api/v1/invoice_items/find?#{ii_1.updated_at}"
+    get "/api/v1/invoice_items/find?updated_at=#{ii_1.updated_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

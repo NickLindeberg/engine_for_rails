@@ -5,7 +5,7 @@ describe 'customer find request' do
     cust_1 = create(:customer)
     cust_2 = create(:customer)
 
-    get "/api/v1/customers/find?#{cust_1.id}"
+    get "/api/v1/customers/find?id=#{cust_1.id}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -22,7 +22,7 @@ describe 'customer find request' do
     cust_1 = create(:customer, first_name: "Joe")
     cust_2 = create(:customer)
 
-    get "/api/v1/customers/find?#{cust_1.first_name}"
+    get "/api/v1/customers/find?first_name=#{cust_1.first_name}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -39,7 +39,7 @@ describe 'customer find request' do
     cust_1 = create(:customer, last_name: "Bob")
     cust_2 = create(:customer)
 
-    get "/api/v1/customers/find?#{cust_1.last_name}"
+    get "/api/v1/customers/find?last_name=#{cust_1.last_name}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -56,7 +56,7 @@ describe 'customer find request' do
     cust_1 = create(:customer, created_at: "2012-03-27 14:54:09 UTC")
     cust_2 = create(:customer)
 
-    get "/api/v1/customers/find?#{cust_1.created_at}"
+    get "/api/v1/customers/find?created_at=#{cust_1.created_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -73,7 +73,7 @@ describe 'customer find request' do
     cust_1 = create(:customer, updated_at: "2012-03-27 14:54:09 UTC")
     cust_2 = create(:customer)
 
-    get "/api/v1/customers/find?#{cust_1.updated_at}"
+    get "/api/v1/customers/find?updated_at=#{cust_1.updated_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

@@ -66,5 +66,4 @@ describe 'invoice_item find request' do
     expect(data[:id]).to eq(ii_1.id.to_s)
     expect(data[:id]).to_not eq(ii_2.id.to_s)
   end
-
 end

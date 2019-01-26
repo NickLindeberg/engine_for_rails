@@ -5,7 +5,7 @@ describe 'merchant find' do
     merchant_1 = create(:merchant)
     merchant_2 = create(:merchant)
 
-    get "/api/v1/merchants/find?#{merchant_1.id}"
+    get "/api/v1/merchants/find?id=#{merchant_1.id}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -25,7 +25,7 @@ describe 'merchant find' do
     merchant_1 = create(:merchant, name: "Fred and Joes Pizza")
     merchant_2 = create(:merchant)
 
-    get "/api/v1/merchants/find?#{merchant_1.name}"
+    get "/api/v1/merchants/find?name=#{merchant_1.name}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -45,7 +45,7 @@ describe 'merchant find' do
     merchant_1 = create(:merchant, created_at: "2012-03-27 14:54:09 UTC")
     merchant_2 = create(:merchant)
 
-    get "/api/v1/merchants/find?#{merchant_1.created_at}"
+    get "/api/v1/merchants/find?created_at=#{merchant_1.created_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -65,7 +65,7 @@ describe 'merchant find' do
     merchant_1 = create(:merchant, updated_at: "2012-03-27 14:54:09 UTC")
     merchant_2 = create(:merchant)
 
-    get "/api/v1/merchants/find?#{merchant_1.updated_at}"
+    get "/api/v1/merchants/find?updated_at=#{merchant_1.updated_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -80,5 +80,4 @@ describe 'merchant find' do
     expect(data[:id]).to eq(merchant_1.id.to_s)
     expect(data[:id]).to_not eq(merchant_2.id.to_s)
   end
-
 end

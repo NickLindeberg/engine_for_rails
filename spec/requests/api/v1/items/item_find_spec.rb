@@ -6,7 +6,7 @@ describe 'item find all request' do
     item_1 = create(:item, merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
 
-    get "/api/v1/items/find?#{item_1.id}"
+    get "/api/v1/items/find?id=#{item_1.id}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -30,7 +30,7 @@ describe 'item find all request' do
     item_1 = create(:item, name: "Slanket", merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
 
-    get "/api/v1/items/find?#{item_1.name}"
+    get "/api/v1/items/find?name=#{item_1.name}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -54,7 +54,7 @@ describe 'item find all request' do
     item_1 = create(:item, description: "will get you all the stuff", merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
 
-    get "/api/v1/items/find?#{item_1.description}"
+    get "/api/v1/items/find?description=#{item_1.description}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -78,7 +78,7 @@ describe 'item find all request' do
     item_1 = create(:item, unit_price: 30, merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
 
-    get "/api/v1/items/find?#{item_1.unit_price}"
+    get "/api/v1/items/find?unit_price=#{item_1.unit_price}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -102,7 +102,7 @@ describe 'item find all request' do
     item_1 = create(:item, created_at: "2012-03-27 14:54:09 UTC", merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
 
-    get "/api/v1/items/find?#{item_1.created_at}"
+    get "/api/v1/items/find?created_at=#{item_1.created_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -126,7 +126,7 @@ describe 'item find all request' do
     item_1 = create(:item, updated_at: "2012-03-27 14:54:09 UTC", merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
 
-    get "/api/v1/items/find?#{item_1.updated_at}"
+    get "/api/v1/items/find?updated_at=#{item_1.updated_at}"
 
     expect(response).to be_successful
     parsed = JSON.parse(response.body, symbolize_names: true)

@@ -1,11 +1,10 @@
 require 'rails_helper'
 
-describe 'item request' do
+describe 'item find all request' do
   it 'can find an item by id' do
     merchant = create(:merchant)
-    create_list(:item, 2, merchant_id: merchant.id)
-    item_1 = Item.first
-    item_2 = Item.last
+    item_1 = create(:item, merchant_id: merchant.id)
+    item_2 = create(:item, merchant_id: merchant.id)
 
     get "/api/v1/items/find?#{item_1.id}"
 
@@ -30,8 +29,6 @@ describe 'item request' do
     merchant = create(:merchant)
     item_1 = create(:item, name: "Slanket", merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
-    item_1 = Item.first
-    item_2 = Item.last
 
     get "/api/v1/items/find?#{item_1.name}"
 
@@ -56,8 +53,6 @@ describe 'item request' do
     merchant = create(:merchant)
     item_1 = create(:item, description: "will get you all the stuff", merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
-    item_1 = Item.first
-    item_2 = Item.last
 
     get "/api/v1/items/find?#{item_1.description}"
 
@@ -82,8 +77,6 @@ describe 'item request' do
     merchant = create(:merchant)
     item_1 = create(:item, unit_price: 30, merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
-    item_1 = Item.first
-    item_2 = Item.last
 
     get "/api/v1/items/find?#{item_1.unit_price}"
 
@@ -108,8 +101,6 @@ describe 'item request' do
     merchant = create(:merchant)
     item_1 = create(:item, created_at: "2012-03-27 14:54:09 UTC", merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
-    item_1 = Item.first
-    item_2 = Item.last
 
     get "/api/v1/items/find?#{item_1.created_at}"
 
@@ -134,8 +125,6 @@ describe 'item request' do
     merchant = create(:merchant)
     item_1 = create(:item, updated_at: "2012-03-27 14:54:09 UTC", merchant_id: merchant.id)
     item_2 = create(:item, merchant_id: merchant.id)
-    item_1 = Item.first
-    item_2 = Item.last
 
     get "/api/v1/items/find?#{item_1.updated_at}"
 

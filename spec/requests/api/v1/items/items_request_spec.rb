@@ -21,6 +21,7 @@ describe 'item request' do
     expect(data.first[:attributes]).to have_key(:unit_price)
     expect(data.first[:attributes]).to have_key(:merchant_id)
   end
+  
   it 'shows a single item' do
     merchant = create(:merchant)
     create_list(:item, 2, merchant_id: merchant.id)

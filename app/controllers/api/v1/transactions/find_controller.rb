@@ -1,5 +1,9 @@
 class Api::V1::Transactions::FindController < ApplicationController
 
+  def index
+    render json: TransactionSerializer.new(Transaction.where(tran_params))
+  end
+
   def show
     render json: TransactionSerializer.new(Transaction.find_by(tran_params))
   end

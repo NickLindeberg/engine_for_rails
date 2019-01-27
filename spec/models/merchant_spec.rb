@@ -73,4 +73,21 @@ RSpec.describe Merchant, type: :model do
       expect(revenue).to eq(13)
     end
   end
+
+  describe 'instance methods' do
+    # it '.total_rev_for_transaction' do
+    #   customer = create(:customer)
+    #   merc_1 = create(:merchant)
+    #   inv_1 = create(:invoice, merchant_id: merc_1.id, customer_id: customer.id)
+    #   inv_2 = create(:invoice, merchant_id: merc_1.id, customer_id: customer.id)
+    #   item_1 = create(:item, merchant_id: merc_1.id)
+    #   ii_1 = create(:invoice_item, item_id: item_1.id, invoice_id: inv_1.id, quantity: 3, unit_price: 3)
+    #   ii_3 = create(:invoice_item, item_id: item_1.id, invoice_id: inv_2.id, quantity: 1, unit_price: 1)
+    #   tran_1 = create(:transaction, invoice_id: inv_1.id, result: "success")
+    #   tran_3 = create(:transaction, invoice_id: inv_2.id, result: "failed")
+    #
+    #   revenue = merc_1.total_rev_for_transaction
+    #   expect(revenue).to eq(9)
+    # end
+  end
 end

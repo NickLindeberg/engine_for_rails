@@ -6,8 +6,8 @@ class Invoice < ApplicationRecord
   has_many :items, through: :invoice_items
 
   validates_presence_of :status
-
-  scope :successful_invoices, -> { joins(:transactions).where("transactions.result = 'successful'") }
+  # 
+  # scope :successful_invoices, -> { joins(:transactions).where("transactions.result = 'successful'") }
 
   def self.best_day(item_id)
     Invoice.select("invoices.created_at, sum(invoice_items.quantity) AS best_day")
@@ -21,9 +21,9 @@ class Invoice < ApplicationRecord
 
 
 
-  def self.successful
-    joins(:transactions)
-      .where("transactions.result = 'successful'")
-  end
+  # def self.successful
+  #   joins(:transactions)
+  #     .where("transactions.result = 'successful'")
+  # end
 
 end

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       namespace :items do
         get 'find', to: 'find#show'
         get '/find_all', to: 'find#index'
+        get '/:id/invoice_items', to: 'item_invoice_item#show'
       end
       resources :items, only: [:index, :show]
 

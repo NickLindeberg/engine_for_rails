@@ -33,5 +33,27 @@ RSpec.describe Item, type: :model do
       expect(top_items.last).to_not eq(item_3)
       expect(top_items.length).to eq(2)
     end
+
+    it '#most_sold_items' do
+      merchant = create(:merchant)
+      customer = create(:customer)
+      item_1 = create(:item, merchant_id: merchant.id, name: "Top")
+      item_2 = create(:item, merchant_id: merchant.id, name: "Second")
+      item_3 = create(:item, merchant_id: merchant.id, name: "Loser")
+
+      inv_1 = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
+      inv_2 = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
+      inv_3 = create(:invoice, customer_id: customer.id, merchant_id: merchant.id)
+
+      ii_1 = create(:invoice_item, invoice_id: inv_1.id, item_id: item_1.id, quantity: 3, unit_price: 3)
+      ii_2 = create(:invoice_item, invoice_id: inv_2.id, item_id: item_2.id, quantity: 2, unit_price: 2)
+      ii_3 = create(:invoice_item, invoice_id: inv_3.id, item_id: item_3.id, quantity: 1, unit_price: 1)
+
+      most_sold = Item.most_sold_items(2)
+      expect(most_sold[0]).to eq(item_1)
+      expect(most_sold.last).to eq(item_2)
+      expect(most_sold.last).to_not eq(item_3)
+      expect(most_sold.length).to eq(2)
+    end
   end
 end

@@ -14,4 +14,11 @@ class Item < ApplicationRecord
     .limit(x)
   end
 
+  def self.most_sold_items(x)
+    x = joins(:invoice_items)
+    .group(:id)
+    .order("sum(invoice_items.quantity) desc")
+    .limit(x)
+  end
+
 end
